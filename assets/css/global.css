@@ -340,6 +340,13 @@ hr{
 
 .widget .titre{
 	margin-bottom:2rem;
+	margin-top:-1.5rem;
+	padding-top:0;
+	padding-bottom:1rem;
+}
+
+.widget .titre::before{
+	display:none;
 }
 
 .widget{
