@@ -71,10 +71,11 @@ function theme_settings() {
 			array(
 				'value' => get_option( $r ),
 				'name'  => $r,
+				'type'  => 'text',
 			)
 		);
 	}
-	register_setting( 'reading', 'dd8_list_id' );
+	register_setting( 'reading', 'dd8_list_id', 'intval' );
 	add_settings_field(
 			'dd8_list_id',
 			'ID de la liste de newsletter DeliPress',
@@ -84,12 +85,13 @@ function theme_settings() {
 			array(
 				'value' => get_option( 'dd8_list_id' ),
 				'name'  => 'dd8_list_id',
+				'type'  => 'number',
 			)
 		);
 }
 
 function input_url( $args ) {
-	printf( '<input type="url" value="%1$s" name="%2$s" id="%2$s" class="regular-text ltr"/>', $args['value'], $args['name'] );
+	printf( '<input type="' . $args['type'] . '" value="%1$s" name="%2$s" id="%2$s" class="regular-text ltr"/>', $args['value'], $args['name'] );
 }
 
 
