@@ -88,6 +88,7 @@ function build_texte( $i, $id ) {
 }
 
 function build_testimoniaux( $i, $id ) {
+	$titre = get_post_meta( $id, "blocs_{$i}_titre", true );
 	$count = get_post_meta( $id, "blocs_{$i}_temoignages", true );
 	$temoignages = [];
 	for ( $j = 0; $j < $count; $j++ ) {
@@ -107,8 +108,8 @@ function build_testimoniaux( $i, $id ) {
 			wpautop( wp_kses_post( $texte ) ),
 		) );
 	}
-	$out = vsprintf( '<section id="description" class="temoignages-wrapper large"><h2 class="titre">%1$s</h2><div class="temoignages">%2$s</div></section>', array(
-		wp_kses_post( nl2br( get_post_meta( $id, "blocs_{$i}_titre", true ) ) ),
+	$out = vsprintf( '<section id="description" class="temoignages-wrapper large">%1$s<div class="temoignages">%2$s</div></section>', array(
+		$titre ? '<h2 class="titre">' . wp_kses_post( nl2br( $titre ) ) . '</h2>' : '',
 		implode( PHP_EOL, $temoignages ),
 	) );
 	return $out;
@@ -116,11 +117,12 @@ function build_testimoniaux( $i, $id ) {
 
 function build_appel_a_action( $i, $id ) {
 	$lien = get_post_meta( $id, "blocs_{$i}_lien", true );
+	$titre = get_post_meta( $id, "blocs_{$i}_titre", true );
 	$out = vsprintf( '<section id="" class="impact inner"><div class="large">
-		<h2 class="titre">%1$s</h2>
+		%1$s
 		<div class="important"><p>%2$s</p><div><a class="cta" href="%4$s" target="%5$s">%3$s</a></div></div>
 		</div></section>', array(
-			wp_kses_post( nl2br( get_post_meta( $id, "blocs_{$i}_titre", true ) ) ),
+			$titre ? '<h2 class="titre">' . wp_kses_post( nl2br( $titre ) ) . '</h2>' : '',
 			wp_kses_post( nl2br( get_post_meta( $id, "blocs_{$i}_phrase", true ) ) ),
 			( $lien ? esc_html( $lien['title'] ) : '' ),
 			( $lien ? esc_attr( $lien['url'] ) : '' ),
@@ -130,6 +132,7 @@ function build_appel_a_action( $i, $id ) {
 }
 
 function build_actualites( $i, $id ) {
+	$titre = get_post_meta( $id, "blocs_{$i}_titre", true );
 	$posts = get_posts( array(
 		'post_type'        => 'post',
 		'post_status'      => 'publish',
@@ -156,8 +159,8 @@ function build_actualites( $i, $id ) {
 			) );
 		}
 	}
-	$out = vsprintf( '<section id="actualites" class="actus large"><h2 class="titre">%1$s</h2>%2$s</section>', array(
-		wp_kses_post( nl2br( get_post_meta( $id, "blocs_{$i}_titre", true ) ) ),
+	$out = vsprintf( '<section id="actualites" class="actus large">%1$s%2$s</section>', array(
+		$titre ? '<h2 class="titre">' . wp_kses_post( nl2br( $titre ) ) . '</h2>' : '',
 		implode( PHP_EOL, $actus ),
 	) );
 	return $out;
@@ -172,13 +175,15 @@ function build_newsletter( $i = null, $id = null ) {
 		<form class="form">
 		<fieldset class="myset">
 		<input type="text" name="email-newsletter" id="email-newsletter">
-		<label>Votre email</label>
+		<label>%3$s</label>
 		</fieldset>
-		<button type="submit" data-text="Je m’abonne">Je m’abonne</button>
+		<button type="submit">%4$s</button>
 		</form></div>
 		</div></section>', array(
 			$titre ? '<h2 class="titre">' . esc_html( $titre ) . '</h2>' : '',
 			$intro ? '<p>' . wp_kses( $intro, array( 'br' => true, 'a' => true ) ) . '</p>' : '',
+			esc_html__( 'Votre email', 'dd8' ),
+			esc_html__( 'Je m’abonne', 'dd8' ),
 		) );
 	return $out;
 }
