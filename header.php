@@ -18,7 +18,7 @@
                 <strong>L’embarcadère, Lyon – 28 Avril 2018</strong>
             </div>
 
-            <a href="#" class="cta"><span>Acheter Billets</span></a>
+            <a href="<?php echo get_permalink( get_option( 'tickets-page' ) ); ?>" class="cta"><span>Acheter Billets</span></a>
         </div>
         <hr>
         <?php

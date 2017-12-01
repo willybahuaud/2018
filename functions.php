@@ -88,6 +88,18 @@ function theme_settings() {
 				'type'  => 'number',
 			)
 		);
+	register_setting( 'reading', 'tickets-page' );
+	add_settings_field(
+			'tickets-page',
+			'Page de vente des tickets',
+			'wp_dropdown_pages',
+			'reading',
+			'default',
+			array(
+				'selected' => get_option( 'tickets-page' ),
+				'name'  => 'tickets-page',
+			)
+		);
 }
 
 function input_url( $args ) {
