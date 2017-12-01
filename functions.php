@@ -61,7 +61,7 @@ function register_image_sizes() {
 add_action( 'admin_init', '\DD8\theme_settings' );
 function theme_settings() {
 	foreach ( array( 'twitter' => 'Twitter', 'facebook' => 'Facebook', 'instagram' => 'Instagram' ) as $r => $reseau ) {
-		register_setting( 'reading', $r );
+    	register_setting( 'reading', $r );
 		add_settings_field(
 			$r,
 			'URL de la page ' . $reseau,
