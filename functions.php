@@ -21,6 +21,8 @@ function enqueue_scripts(){
     wp_register_style( 'style', get_theme_file_uri( 'assets/css/minified.css' ), null, DD8_VER );
     wp_enqueue_style( 'style' );
 
+    wp_deregister_script( 'jquery' );
+    wp_register_script( 'jquery', '//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js', false, '3.2.1-b', true );
     wp_register_script( 'textarea-caret-position', get_theme_file_uri( 'assets/js/textarea-caret-position.min.js' ), array(), DD8_VER, true );
     wp_register_script( 'glitcher', get_theme_file_uri( 'assets/js/glitcher.min.js' ), array(), DD8_VER, true );
     wp_register_script( 'background', get_theme_file_uri( 'assets/js/background.min.js' ), array(), DD8_VER, true );
