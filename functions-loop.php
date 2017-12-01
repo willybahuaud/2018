@@ -174,7 +174,7 @@ function build_newsletter( $i = null, $id = null ) {
 		<div class="newsletter-form">%2$s<p></p>
 		<form class="form">
 		<fieldset class="myset">
-		<input type="text" name="email-newsletter" id="email-newsletter">
+		<input type="text" name="email-newsletter" id="email-newsletter" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$">
 		<label>%3$s</label>
 		</fieldset>
 		<button type="submit">%4$s</button>
