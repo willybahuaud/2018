@@ -935,6 +935,7 @@ form input[type="submit"]:hover:after{
 .text * + img,
 .text * + blockquote,
 .text * + ul,
+.text * + .frm_forms,
 .text * + ol{
 	margin-top:2rem;
 }
@@ -1706,6 +1707,10 @@ form input[type="submit"]:hover:after{
 	.temoignages .temoignage .portrait{
 		width:13rem;
     	height:16.1rem;
+	}
+
+	.temoignage:nth-child(even) > div::before{
+		margin-top:-1rem;
 	}
 
 	.impact, .temoignages-wrapper, .actus{
