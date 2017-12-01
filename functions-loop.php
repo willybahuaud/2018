@@ -164,9 +164,11 @@ function build_actualites( $i, $id ) {
 }
 
 function build_newsletter( $i = null, $id = null ) {
-	$out = '<section id="" class="social"><div class="large">
-		<h2 class="titre">Newsletter</h2>
-		<div class="newsletter-form"><p>Restez informés de toute l’actualité du WP Tech</p>
+	$titre = get_post_meta( $id, "blocs_{$i}_titre", true );
+	$intro = get_post_meta( $id, "blocs_{$i}_intro", true );
+	$out = vsprintf( '<section id="" class="social"><div class="large">
+		%1$s
+		<div class="newsletter-form">%2$s<p></p>
 		<form class="form">
 		<fieldset class="myset">
 		<input type="text" name="email-newsletter" id="email-newsletter">
@@ -174,7 +176,10 @@ function build_newsletter( $i = null, $id = null ) {
 		</fieldset>
 		<button type="submit" data-text="Je m’abonne">Je m’abonne</button>
 		</form></div>
-		</div></section>';
+		</div></section>', array(
+			$titre ? '<h2 class="titre">' . esc_html( $titre ) . '</h2>' : '',
+			$intro ? '<p>' . wp_kses( $intro, array( 'br' => true, 'a' => true ) ) . '</p>' : '',
+		) );
 	return $out;
 }
 

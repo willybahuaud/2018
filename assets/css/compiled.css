@@ -922,7 +922,26 @@ form input[type="submit"]:hover:after{
 	color:#b7d0e0;
 }
 
-.text * + *{
+.text p + p,
+.text p + img,
+.text p + ul,
+.text p + blockquote,
+.text img + p,
+.text img + img,
+.text img + ul,
+.text img + ol,
+.text img + blockquote,
+.text ul + ul,
+.text ul + ol,
+.text ul + img,
+.text ul + blockquote,
+.text ul + p,
+.text ol + ul,
+.text ol + img,
+.text ol + p,
+.text ol + ol,
+.text ol + blockquote,
+.text p + ol{
 	margin-top:2rem;
 }
 
@@ -940,7 +959,7 @@ form input[type="submit"]:hover:after{
 }
 
 .text li::before{
-	content:'⎯⎯⎯';
+	content:'⎯';
 	position:absolute;
 	left:0;
 	top:0;
