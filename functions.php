@@ -132,7 +132,7 @@ function register_sidebars() {
 
 function add_subscriber( $req ) {
 	if ( function_exists( 'delipress_create_subscriber_on_list' ) ) {
-		$list_id = get_option( 'dd8_list_id', 1 );
+		$list_id = intval( get_option( 'dd8_list_id', 1 ) );
 		return delipress_create_subscriber_on_list( $req->get_param( 'email' ), $list_id );
 	}
 	return false;
