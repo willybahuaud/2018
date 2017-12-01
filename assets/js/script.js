@@ -66,7 +66,27 @@ jQuery(document).ready(function($){
         window.open(url, '_blank');
     });
 
-
+    var k = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65],
+        n = 0,
+        audio = false;
+    $(document).keydown(function (e) {
+        if (e.keyCode === k[n++]) {
+            if (n === k.length) {
+                if (!audio) {
+                    audio = new Audio('/wp-content/themes/2018/assets/sounds/ericskiff-wereallunderthestars.mp3');
+                    audio.play();
+                } else {
+                    audio.pause();
+                    audio.currentTime = 0;
+                }
+                n = 0;
+                return false;
+            }
+        }
+        else {
+            n = 0;
+        }
+    });
 });
 
 /**
@@ -83,25 +103,3 @@ function getRandomString( count ) {
 
 
 // https://codepen.io/NyX/pen/mJezOE
-
-var k = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65],
-    n = 0,
-    audio = false;
-jQuery(document).keydown(function (e) {
-    if (e.keyCode === k[n++]) {
-        if (n === k.length) {
-            if (!audio) {
-                audio = new Audio('/wp-content/themes/2018/assets/sounds/ericskiff-wereallunderthestars.mp3');
-                audio.play();
-            } else {
-                audio.pause();
-                audio.currentTime = 0;
-            }
-            n = 0;
-            return false;
-        }
-    }
-    else {
-        n = 0;
-    }
-});
