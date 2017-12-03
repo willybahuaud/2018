@@ -53,8 +53,8 @@ function willy_loop_start() {
             has_post_thumbnail() ? get_the_post_thumbnail( get_queried_object(), 'header-single' ) : '',
         ) );
 	}
-	if ( is_archive() || is_home() ) {
-		$news_id = get_option( 'page_for_posts' );
+	$news_id = get_option( 'page_for_posts' );
+	if ( is_home() ) {
 		vprintf( '<section class="image-article-wrapper">
             <div class="titre-single"><h1>%1$s</h1></div>
             %2$s
@@ -62,14 +62,22 @@ function willy_loop_start() {
             get_the_title( $news_id ),
             has_post_thumbnail() ? get_the_post_thumbnail( $news_id, 'header-single' ) : '',
         ) );
-		echo '<section class="large block-sidebar-wrapper"><div class="actus with-sidebar">';
-		
+		echo '<section class="large block-sidebar-wrapper"><div class="actus with-sidebar">';	
+	} elseif ( is_category() ) {
+		vprintf( '<section class="image-article-wrapper">
+            <div class="titre-single"><h1>%1$s</h1></div>
+            %2$s
+        </section>', array(
+            single_cat_title( '', false ),
+            has_post_thumbnail() ? get_the_post_thumbnail( $news_id, 'header-single' ) : '',
+        ) );
+		echo '<section class="large block-sidebar-wrapper"><div class="actus with-sidebar">';	
 	}
 }
 
 add_action( 'loop_end', '\DD8\willy_loop_end' );
 function willy_loop_end() {
-	if ( is_archive() || is_home() ) {
+	if ( is_home() || is_category() ) {
 		echo '</div>';
 		if ( is_active_sidebar( 'main-sidebar' ) ) {
 			echo '<aside class="sidebar"><ul>';
