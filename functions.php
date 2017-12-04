@@ -37,7 +37,8 @@ function enqueue_scripts(){
  */
 add_action( 'after_setup_theme', '\DD8\register_menus' );
 function register_menus() {
-	add_theme_support( 'post-thumbnails', array( 'post', 'page' ) );  
+	add_theme_support( 'post-thumbnails', array( 'post', 'page' ) );
+	add_theme_support( 'title-tag' );  
 	register_nav_menu( 'main-menu', 'Menu principal (entête)' );
 	register_nav_menu( 'footer-menu', 'Menu footer (pied de page)' );
 }
