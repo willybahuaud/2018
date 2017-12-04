@@ -174,7 +174,7 @@ function build_actualites( $i, $id ) {
 	return $out;
 }
 
-function build_newsletter( $i = 0, $id = 0 ) {
+function build_newsletter( $i = null, $id = null ) {
 	$titre = get_post_meta( $id, "blocs_{$i}_titre", true );
 	$intro = get_post_meta( $id, "blocs_{$i}_intro", true );
 	$out = vsprintf( '<section id="" class="social"><div class="large">
