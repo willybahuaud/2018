@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 add_filter( 'the_content', '\DD8\content_filter', 20 );
 function content_filter( $content ) {
-	if ( ( is_page() || is_single() ) && is_main_query() && $blocs = get_post_meta( get_queried_object_id(), 'blocs', true ) ) {
+	if ( in_the_loop() && ( is_page() || is_single() ) && is_main_query() && $blocs = get_post_meta( get_queried_object_id(), 'blocs', true ) ) {
 		remove_filter( 'the_content', '\DD8\content_filter', 20 );
 		if ( is_page() ) {
 			$content = '';
@@ -21,7 +21,7 @@ function content_filter( $content ) {
 				'id' => get_queried_object_id(),
 			) );
 		}
-	} elseif ( ( is_home() || is_category() || is_archive() ) && is_main_query() ) {
+	} elseif ( in_the_loop() && ( is_home() || is_category() || is_archive() ) && is_main_query() ) {
 		global $post;
 		$excerpt_length = 40;
 		$content = vsprintf( '<div class="actu">
