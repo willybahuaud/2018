@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die();
 }
 
-add_filter( 'the_content', '\DD8\content_filter' );
+add_filter( 'the_content', '\DD8\content_filter', 20 );
 function content_filter( $content ) {
 	if ( ( is_page() || is_single() ) && is_main_query() && $blocs = get_post_meta( get_queried_object_id(), 'blocs', true ) ) {
 		remove_filter( 'the_content', '\DD8\content_filter' );
