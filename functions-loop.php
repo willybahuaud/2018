@@ -6,10 +6,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die();
 }
 
-add_filter( 'the_content', '\DD8\content_filter', 10 );
+add_filter( 'the_content', '\DD8\content_filter', 20 );
 function content_filter( $content ) {
 	if ( ( is_page() || is_single() ) && is_main_query() && $blocs = get_post_meta( get_queried_object_id(), 'blocs', true ) ) {
-		remove_filter( 'the_content', '\DD8\content_filter' );
+		remove_filter( 'the_content', '\DD8\content_filter', 20 );
 		if ( is_page() ) {
 			$content = '';
 		} else {
@@ -174,7 +174,7 @@ function build_actualites( $i, $id ) {
 	return $out;
 }
 
-function build_newsletter( $i = null, $id = null ) {
+function build_newsletter( $i = 0, $id = 0 ) {
 	$titre = get_post_meta( $id, "blocs_{$i}_titre", true );
 	$intro = get_post_meta( $id, "blocs_{$i}_intro", true );
 	$out = vsprintf( '<section id="" class="social"><div class="large">
