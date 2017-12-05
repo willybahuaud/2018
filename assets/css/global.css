@@ -694,6 +694,15 @@ form input[type="submit"]:hover:after{
 	font-size:1.1rem;
 }
 
+.temoignage .texte a{
+	box-shadow:0 2px 0 #0d8a91;
+}
+
+.temoignage .texte a:hover,
+.temoignage .texte a:focus{
+	box-shadow:0 2px 0 white;
+}
+
 .temoignage:nth-child(odd) canvas{
 	width:270px;
 	height:335px;
