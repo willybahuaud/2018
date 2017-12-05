@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die();
 }
 
-define( 'DD8_VER', 1.6 );
+define( 'DD8_VER', 1.7 );
 
 get_template_part( 'functions', 'loop' );
 if ( is_admin() ) {
@@ -23,8 +23,9 @@ function enqueue_scripts(){
 
     wp_deregister_script( 'jquery' );
     wp_register_script( 'jquery', '//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js', false, '3.2.1-b', true );
+    wp_register_script( 'imagesloaded', '//unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js', false, DD8_VER, true );
     wp_register_script( 'textarea-caret-position', get_theme_file_uri( 'assets/js/textarea-caret-position.min.js' ), array(), DD8_VER, true );
-    wp_register_script( 'glitcher', get_theme_file_uri( 'assets/js/glitcher.min.js' ), array(), DD8_VER, true );
+    wp_register_script( 'glitcher', get_theme_file_uri( 'assets/js/glitcher.min.js' ), array( 'imagesloaded' ), DD8_VER, true );
     wp_register_script( 'background', get_theme_file_uri( 'assets/js/background.min.js' ), array(), DD8_VER, true );
     wp_register_script( 'main', get_theme_file_uri( 'assets/js/script.min.js' ), array( 'jquery', 'textarea-caret-position', 'glitcher', 'background' ), DD8_VER, true );
 	wp_enqueue_script( 'main' );

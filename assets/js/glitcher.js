@@ -125,11 +125,10 @@ function applyImageEffect(img) {
 }
 function glitch() {
     var imgs = document.querySelectorAll('.to-glitch');
-    imgs.forEach(function (el) {
-        applyImageEffect(el);
-        el.onload = function() {
+    imagesLoaded(imgs, function() {
+        imgs.forEach(function (el) {
             applyImageEffect(el);
-        }
+        });
     });
 }
 
