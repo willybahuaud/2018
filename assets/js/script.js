@@ -31,7 +31,12 @@ jQuery(document).ready(function($){
                     $n.find('form').remove();
                     $n.append($('<p><strong>Votre demande d’abonnement à bien été prise en compte ! Merci 🙌🏻</strong></p>'));
                 } else {
-                    $('<p class="newsletter-error">Il semble y avoir un soucis avec votre adresse email.</p>').insertAfter('.newsletter-form p:eq(0)');
+                    if (typeof data.results != 'undefined' && 'Member Exists' == data.results.title ) {
+                        $('<p class="newsletter-error">Tu es déjà inscrit 🙃</p>').insertAfter('.newsletter-form p:eq(0)');
+                    } else {
+                        $('<p class="newsletter-error">Il semble y avoir un soucis avec votre adresse email.</p>').insertAfter('.newsletter-form p:eq(0)');
+                    }
+                    $('#email-newsletter').focus();
                 }
             },
         });
