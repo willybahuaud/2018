@@ -99,26 +99,36 @@ function build_testimoniaux( $i, $id ) {
 	$titre   = get_post_meta( $id, "blocs_{$i}_titre", true );
 	$shuffle = get_post_meta( $id, "blocs_{$i}_shuffle", true );
 	$count   = get_post_meta( $id, "blocs_{$i}_temoignages", true );
+	$t_infos = [];
 	$temoignages = [];
 	for ( $j = 0; $j < $count; $j++ ) {
 		$nom   = get_post_meta( $id, "blocs_{$i}_temoignages_{$j}_nom", true );
 		$role  = get_post_meta( $id, "blocs_{$i}_temoignages_{$j}_role", true );
 		$photo = get_post_meta( $id, "blocs_{$i}_temoignages_{$j}_photo", true );
 		$texte = get_post_meta( $id, "blocs_{$i}_temoignages_{$j}_texte", true );
-		$temoignages[] = vsprintf( '<div class="temoignage">
-		<div><h3 class="temoignage-nom">%1$s</h3>
-		<div><span class="temoignage-role">%2$s</span></div>
-		<div class="texte">%4$s</div></div>
-		%3$s
-		</div>', array(
-			$nom,
-			$role,
-			( $photo ? wp_get_attachment_image( $photo, 'portrait-' . ( $j % 2 ), '', array( 'class' => 'portrait to-glitch' ) ) : '' ),
-			wpautop( wp_kses_post( $texte ) ),
-		) );
+		$t_infos[] = compact(
+			'nom',
+			'role',
+			'photo',
+			'texte'
+		);
 	}
 	if ( $shuffle ) {
-		shuffle( $temoignages );
+		shuffle( $t_infos );
+	}
+	var_dump( $t_infos );
+	foreach ( $t_infos as $j => $t ) {
+		$temoignages[] = vsprintf( '<div class="temoignage">
+			<div><h3 class="temoignage-nom">%1$s</h3>
+			<div><span class="temoignage-role">%2$s</span></div>
+			<div class="texte">%4$s</div></div>
+			%3$s
+			</div>', array(
+			$t['nom'],
+			$t['role'],
+			( $t['photo'] ? wp_get_attachment_image( $t['photo'], 'portrait-' . ( $j % 2 ), '', array( 'class' => 'portrait to-glitch' ) ) : '' ),
+			wpautop( wp_kses_post( $t['texte'] ) ),
+		) );
 	}
 	$out = vsprintf( '<section id="description" class="temoignages-wrapper large">%1$s<div class="temoignages">%2$s</div></section>', array(
 		$titre ? '<h2 class="titre">' . wp_kses_post( nl2br( $titre ) ) . '</h2>' : '',
