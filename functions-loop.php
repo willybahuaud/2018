@@ -96,8 +96,9 @@ function build_texte( $i, $id ) {
 }
 
 function build_testimoniaux( $i, $id ) {
-	$titre = get_post_meta( $id, "blocs_{$i}_titre", true );
-	$count = get_post_meta( $id, "blocs_{$i}_temoignages", true );
+	$titre   = get_post_meta( $id, "blocs_{$i}_titre", true );
+	$shuffle = get_post_meta( $id, "blocs_{$i}_shuffle", true );
+	$count   = get_post_meta( $id, "blocs_{$i}_temoignages", true );
 	$temoignages = [];
 	for ( $j = 0; $j < $count; $j++ ) {
 		$nom   = get_post_meta( $id, "blocs_{$i}_temoignages_{$j}_nom", true );
@@ -115,6 +116,9 @@ function build_testimoniaux( $i, $id ) {
 			( $photo ? wp_get_attachment_image( $photo, 'portrait-' . ( $j % 2 ), '', array( 'class' => 'portrait to-glitch' ) ) : '' ),
 			wpautop( wp_kses_post( $texte ) ),
 		) );
+	}
+	if ( $shuffle ) {
+		shuffle( $temoignages );
 	}
 	$out = vsprintf( '<section id="description" class="temoignages-wrapper large">%1$s<div class="temoignages">%2$s</div></section>', array(
 		$titre ? '<h2 class="titre">' . wp_kses_post( nl2br( $titre ) ) . '</h2>' : '',
