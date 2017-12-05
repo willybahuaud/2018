@@ -116,7 +116,6 @@ function build_testimoniaux( $i, $id ) {
 	if ( $shuffle ) {
 		shuffle( $t_infos );
 	}
-	var_dump( $t_infos );
 	foreach ( $t_infos as $j => $t ) {
 		$temoignages[] = vsprintf( '<div class="temoignage">
 			<div><h3 class="temoignage-nom">%1$s</h3>
