@@ -188,7 +188,7 @@ function build_actualites( $i, $id ) {
 		$titre ? '<h2 class="titre">' . wp_kses_post( nl2br( $titre ) ) . '</h2>' : '',
 		implode( PHP_EOL, $actus ),
 	) );
-	return $out;
+	return ! empty( $actus ) ? $out : '';
 }
 
 function build_newsletter( $i = 0, $id = 0 ) {
