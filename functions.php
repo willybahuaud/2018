@@ -60,6 +60,9 @@ function register_image_sizes() {
     add_image_size( 'post-1', 350, 200, true );
 }
 
+/**
+ * Theme settings
+ */
 add_action( 'admin_init', '\DD8\theme_settings' );
 function theme_settings() {
 	foreach ( array( 'twitter' => 'Twitter', 'facebook' => 'Facebook', 'instagram' => 'Instagram' ) as $r => $reseau ) {
@@ -104,11 +107,33 @@ function theme_settings() {
 		);
 }
 
+/**
+ * Custom theme settings field
+ */
 function input_url( $args ) {
 	printf( '<input type="' . $args['type'] . '" value="%1$s" name="%2$s" id="%2$s" class="regular-text ltr"/>', $args['value'], $args['name'] );
 }
 
+/**
+ * Translate page_id if polylang installed
+ */
+foreach ( array(
+	'tickets-page',
+	) as $o ) {
+	add_filter( "option_$o", '\DD8\filter_pll_page_id', 10, 2 );
+}
 
+function filter_pll_page_id( $value, $option ) {
+	if ( function_exists( 'pll_get_post' ) ) {
+		return pll_get_post( $value );
+	}
+	return $value;
+}
+
+
+/**
+ * Add viewport meta on `wp_head`
+ */
 add_action( 'wp_head', '\DD8\wp_head' );
 function wp_head() {
 	?>
@@ -131,7 +156,9 @@ function register_sidebars() {
 	) );
 }
 
-
+/**
+ * Save Subscribers into DeliPress list
+ */
 function add_subscriber( $req ) {
 	if ( function_exists( 'delipress_create_subscriber_on_list' ) ) {
 		$list_id = get_option( 'dd8_list_id', 1 );
