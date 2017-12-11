@@ -17,7 +17,17 @@ foreach ( array( 'twitter' => 'Twitter', 'facebook' => 'Facebook', 'instagram' =
     }
 }
 ?>
-<div><small>Copyright © <?php echo date('Y'); ?> - WP TECH | LYON 2018</small></div>
+<div><small>Copyright © <?php echo date('Y'); ?> - WP TECH | LYON 2018<?php
+if ( has_nav_menu( 'footer-menu' ) ) {
+    echo ' | ';
+    wp_nav_menu( array(
+        'theme_location' => 'footer-menu',
+        'container' => false,
+        'depth'=> 1,
+        'menu_class' => 'menu-footer',
+    ) );
+}
+?></small></div>
 </footer>
 <?php wp_footer(); ?>
 </body>

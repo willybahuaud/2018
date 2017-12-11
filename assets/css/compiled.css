@@ -890,6 +890,23 @@ form input[type="submit"]:hover:after{
 	font-size:1.1em;
 }
 
+.menu-footer li {
+    display: inline;
+    text-transform: uppercase;
+}
+
+.menu-footer {
+    display: inline;
+}
+
+.menu-footer li + li::before {
+    content: ' | ';
+}
+
+.menu-footer li a:hover{
+	color:white;
+}
+
 .footer .social-link{
 	overflow:hidden;
 	position:relative;
