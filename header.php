@@ -18,7 +18,7 @@
                 <strong><?php _e( 'L’embarcadère, Lyon – 28 Avril 2018', 'dd8' ); ?></strong>
             </div>
 
-            <a href="<?php echo get_permalink( get_option( 'tickets-page' ) ); ?>" class="cta"><span>Acheter Billets</span></a>
+            <a href="<?php echo get_permalink( get_option( 'tickets-page' ) ); ?>" class="cta"><span><?php _e( 'Acheter Billets', 'dd8' ); ?></span></a>
         </div>
         <hr>
         <?php
