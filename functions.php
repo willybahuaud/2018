@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die();
 }
 
-define( 'DD8_VER', '1.9.2' );
+define( 'DD8_VER', '1.9.4' );
 
 get_template_part( 'functions', 'loop' );
 if ( is_admin() ) {
@@ -30,7 +30,14 @@ function enqueue_scripts(){
     wp_register_script( 'main', get_theme_file_uri( 'assets/js/script.min.js' ), array( 'jquery', 'textarea-caret-position', 'glitcher', 'background' ), DD8_VER, true );
 	wp_enqueue_script( 'main' );
 	
-	wp_localize_script( 'main', 'wpt2018', array( 'newsletter' => home_url( '/wp-json/wptech/v1/addsubscriber' ) ) );
+	wp_localize_script( 'main', 'wpt2018', array(
+		'newsletter' => home_url( '/wp-json/wptech/v1/addsubscriber' ),
+		'text' => array(
+			'newsletterValid' => __( 'Votre demande d’abonnement à bien été prise en compte ! Merci', 'dd8' ),
+			'newsletterAlreadyregistred' => __( 'Tu es déjà inscrit', 'dd8' ),
+			'newsletterError' => __( 'Il semble y avoir un soucis avec votre adresse email.', 'dd8' ),
+		),
+	) );
 }
 
 /**

@@ -29,12 +29,12 @@ jQuery(document).ready(function($){
                     $('.newsletter-error').remove();
                     $n = $('.newsletter-form');
                     $n.find('form').remove();
-                    $n.append($('<p><strong>Votre demande d’abonnement à bien été prise en compte ! Merci 🙌🏻</strong></p>'));
+                    $n.append($('<p><strong>' + wpt2018.text.newsletterValid + ' 🙌🏻</strong></p>'));
                 } else {
                     if (typeof data.results != 'undefined' && 'Member Exists' == data.results.title ) {
-                        $('<p class="newsletter-error">Tu es déjà inscrit 🙃</p>').insertAfter('.newsletter-form p:eq(0)');
+                        $('<p class="newsletter-error">' + wpt2018.text.newsletterAlreadyregistred + ' 🙃</p>').insertAfter('.newsletter-form p:eq(0)');
                     } else {
-                        $('<p class="newsletter-error">Il semble y avoir un soucis avec votre adresse email.</p>').insertAfter('.newsletter-form p:eq(0)');
+                        $('<p class="newsletter-error">' + wpt2018.text.newsletterError + '</p>').insertAfter('.newsletter-form p:eq(0)');
                     }
                     $('#email-newsletter').focus();
                 }
