@@ -14,8 +14,8 @@
                 echo $logo;
             ?>
             <div class="slogan">
-                L’unique événement WordPress technique annuel<br/>
-                <strong>L’embarcadère, Lyon – 28 Avril 2018</strong>
+                <?php _e( 'L’unique événement WordPress technique annuel', 'dd8' ); ?><br/>
+                <strong><?php _e( 'L’embarcadère, Lyon – 28 Avril 2018', 'dd8' ); ?></strong>
             </div>
 
             <a href="<?php echo get_permalink( get_option( 'tickets-page' ) ); ?>" class="cta"><span>Acheter Billets</span></a>
