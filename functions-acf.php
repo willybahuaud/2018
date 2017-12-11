@@ -496,7 +496,7 @@ acf_add_local_field_group(array(
 							'required' => 0,
 							'conditional_logic' => 0,
 							'wrapper' => array(
-								'width' => '50',
+								'width' => '25',
 								'class' => '',
 								'id' => '',
 							),
@@ -505,6 +505,35 @@ acf_add_local_field_group(array(
 							'ui' => 0,
 							'ui_on_text' => '',
 							'ui_off_text' => '',
+						),
+						array(
+							'key' => 'field_5a2e5167dee5b',
+							'label' => 'Nombre maximum à afficher',
+							'name' => 'max',
+							'type' => 'number',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => array(
+								array(
+									array(
+										'field' => 'field_5a270fc6e662a',
+										'operator' => '==',
+										'value' => '1',
+									),
+								),
+							),
+							'wrapper' => array(
+								'width' => '25',
+								'class' => '',
+								'id' => '',
+							),
+							'default_value' => '',
+							'placeholder' => '',
+							'prepend' => '',
+							'append' => '',
+							'min' => 0,
+							'max' => '',
+							'step' => '',
 						),
 						array(
 							'key' => 'field_5a0c63c279cab',
@@ -972,7 +1001,7 @@ acf_add_local_field_group(array(
 							'required' => 0,
 							'conditional_logic' => 0,
 							'wrapper' => array(
-								'width' => '50',
+								'width' => '25',
 								'class' => '',
 								'id' => '',
 							),
@@ -981,6 +1010,35 @@ acf_add_local_field_group(array(
 							'ui' => 0,
 							'ui_on_text' => '',
 							'ui_off_text' => '',
+						),
+						array(
+							'key' => 'field_5a2e51bfd9187',
+							'label' => 'Nombre maximum à afficher',
+							'name' => 'max',
+							'type' => 'number',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => array(
+								array(
+									array(
+										'field' => 'field_5a27100bf8378',
+										'operator' => '==',
+										'value' => '1',
+									),
+								),
+							),
+							'wrapper' => array(
+								'width' => '25',
+								'class' => '',
+								'id' => '',
+							),
+							'default_value' => '',
+							'placeholder' => '',
+							'prepend' => '',
+							'append' => '',
+							'min' => 0,
+							'max' => '',
+							'step' => '',
 						),
 						array(
 							'key' => 'field_5a212cdda869f',

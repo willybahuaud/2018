@@ -99,6 +99,7 @@ function build_testimoniaux( $i, $id ) {
 	$titre   = get_post_meta( $id, "blocs_{$i}_titre", true );
 	$shuffle = get_post_meta( $id, "blocs_{$i}_shuffle", true );
 	$count   = get_post_meta( $id, "blocs_{$i}_temoignages", true );
+	$max     = intval( get_post_meta( $id, "blocs_{$i}_max", true ) );
 	$t_infos = [];
 	$temoignages = [];
 	for ( $j = 0; $j < $count; $j++ ) {
@@ -115,6 +116,9 @@ function build_testimoniaux( $i, $id ) {
 	}
 	if ( $shuffle ) {
 		shuffle( $t_infos );
+	}
+	if ( $max ) {
+		$t_infos = array_slice( $t_infos, 0, $max );
 	}
 	foreach ( $t_infos as $j => $t ) {
 		$temoignages[] = vsprintf( '<div class="temoignage">
