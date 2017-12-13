@@ -23,6 +23,7 @@ jQuery(document).ready(function($){
             method:'post',
             data:{
                 email: $('#email-newsletter').val(),
+                lang: $('#lang-newsletter').val(),
             },
             success:function(data){
                 if(data.success) {

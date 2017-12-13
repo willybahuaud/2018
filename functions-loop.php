@@ -203,12 +203,14 @@ function build_newsletter( $i = 0, $id = 0 ) {
 		<label>%3$s</label>
 		</fieldset>
 		<button type="submit">%4$s</button>
+		<input type="hidden" name="lang-newsletter" id="lang-newsletter" value="%5$s"/>
 		</form></div>
 		</div></section>', array(
 			$titre ? '<h2 class="titre">' . esc_html( $titre ) . '</h2>' : '',
 			$intro ? '<p>' . wp_kses( $intro, array( 'br' => true, 'a' => true ) ) . '</p>' : '',
 			esc_html__( 'Votre email', 'dd8' ),
 			esc_html__( 'Je m’abonne', 'dd8' ),
+			function_exists( 'pll_current_language' ) ? pll_current_language() : '',
 		) );
 	return $out;
 }

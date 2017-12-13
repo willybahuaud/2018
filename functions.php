@@ -88,6 +88,7 @@ function theme_settings() {
 		);
 	}
 	register_setting( 'reading', 'dd8_list_id' );
+	register_setting( 'reading', 'dd8_list_id_en' );
 	add_settings_field(
 			'dd8_list_id',
 			'ID de la liste de newsletter DeliPress',
@@ -97,6 +98,18 @@ function theme_settings() {
 			array(
 				'value' => get_option( 'dd8_list_id' ),
 				'name'  => 'dd8_list_id',
+				'type'  => 'text',
+			)
+		);
+	add_settings_field(
+			'dd8_list_id_en',
+			'ID de la liste de newsletter DeliPress (en)',
+			'\DD8\input_url',
+			'reading',
+			'default',
+			array(
+				'value' => get_option( 'dd8_list_id_en' ),
+				'name'  => 'dd8_list_id_en',
 				'type'  => 'text',
 			)
 		);
@@ -169,6 +182,9 @@ function register_sidebars() {
 function add_subscriber( $req ) {
 	if ( function_exists( 'delipress_create_subscriber_on_list' ) ) {
 		$list_id = get_option( 'dd8_list_id', 1 );
+		if ( 'en' == $req->get_param( 'lang' ) ) {
+			$list_id = get_option( 'dd8_list_id_en', 1 );
+		}
 		return delipress_create_subscriber_on_list( $req->get_param( 'email' ), $list_id );
 	}
 	return false;
