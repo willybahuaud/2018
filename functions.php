@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die();
 }
 
-define( 'DD8_VER', '1.9.5' );
+define( 'DD8_VER', '1.9.6' );
 
 get_template_part( 'functions', 'loop' );
 if ( is_admin() ) {
@@ -45,7 +45,7 @@ function enqueue_scripts(){
  */
 add_action( 'after_setup_theme', '\DD8\register_menus' );
 function register_menus() {
-	add_theme_support( 'post-thumbnails', array( 'post', 'page' ) );
+	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'title-tag' );  
 	register_nav_menu( 'main-menu', 'Menu principal (entête)' );
 	register_nav_menu( 'footer-menu', 'Menu footer (pied de page)' );
@@ -65,6 +65,10 @@ function register_image_sizes() {
     add_image_size( 'portrait-1', 340, 460, true );
     add_image_size( 'post-0', 732, 416, true );
     add_image_size( 'post-1', 350, 200, true );
+    add_image_size( 'sponsor-0', 420, 190, false );
+    add_image_size( 'sponsor-1', 340, 160, false );
+    add_image_size( 'sponsor-2', 220, 140, false );
+    add_image_size( 'sponsor-3', 180, 120, false );
 }
 
 /**

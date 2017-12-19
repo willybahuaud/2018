@@ -233,6 +233,42 @@ function build_services( $i, $id ) {
 	return $out;
 }
 
+function build_sponsors( $i, $id ) {
+	$titre = get_post_meta( $id, "blocs_{$i}_titre", true );
+	$niveaux = [ 'platinium' => '', 'or' => '', 'argent' => '', 'bronze' => '' ];
+	$sponsors = get_posts( array(
+		'suppress_filters' => false,
+		'post_type'        => 'sponsor',
+		'posts_per_page'   => 50,
+		'orderby'         => 'rand',
+		'post_status'      => 'published',
+		'tax_query'        => array(
+			array(
+				'taxonomy' => 'niveau',
+				'field'    => 'slug',
+				'terms'    => array_keys( $niveaux ),
+			),
+		),
+	) );
+	if ( is_wp_error( $sponsors ) || empty( $sponsors ) ) {
+		return;
+	}
+	foreach ( $sponsors as $sponsor ) {
+		$niveau = reset( wp_get_object_terms( $sponsor->ID, 'niveau' ) );
+		$lien = get_post_meta( $sponsor->ID, 'lien', true );
+		$niveaux[ $niveau->slug ] .= vsprintf( '<%1$s%2$s>%3$s</%1$s>', array(
+			$lien ? 'a' : 'div',
+			$lien ? ' href="' . esc_attr( $lien ) . '"' : '',
+			get_the_post_thumbnail( $sponsor, 'sponsor-' . array_search( $niveau->slug, array_keys( $niveaux ) ) ),
+		) );
+	}
+	$out = vsprintf( '<section id="description" class="description sponsors-block">%1$s%2$s</section>', array(
+		$titre ? '<h2 class="titre">' . wp_kses_post( nl2br( $titre ) ) . '</h2>' : '',
+		'<div class="palier">' . implode( '</div><div class="palier">', $niveaux ) . '</div>',
+	) );
+	return $out;
+}
+
 function build_encart_accueil( $i, $id ) {
 	$image = get_post_meta( $id, "blocs_{$i}_image", true );
 	$titre = get_post_meta( $id, "blocs_{$i}_titre", true );

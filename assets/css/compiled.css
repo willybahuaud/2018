@@ -1520,6 +1520,43 @@ form input[type="submit"]:hover:after{
 	margin:2rem;
 }
 
+.content-wrapper-page{
+	counter-increment: section;
+}
+
+.palier {
+    display: flex;
+    justify-content: center;
+	background:white;
+	flex-wrap:wrap;
+}
+
+.sponsors-block .titre{
+	margin-bottom:4rem;
+}
+
+.palier > *{
+    align-self: center;
+    margin: 0 2rem;
+}
+
+.palier img{
+	max-width:100%;
+	height:auto;
+}
+
+.palier:last-child{
+	padding-bottom:3rem;
+}
+
+.palier{
+	padding-top:3rem;
+}
+
+.palier + .palier{
+	padding-top:0;
+}
+
 @media (max-width:1440px) {
 	.titre-single{
 		width: 60%;
