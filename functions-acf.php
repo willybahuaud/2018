@@ -6,6 +6,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die();
 }
 
+add_filter( 'acf/fields/flexible_content/layout_title', '\DD8\layout_title', 10, 4 );
+function layout_title( $title, $field, $layout, $i ) {
+	if ( 'flexible_content' === $field['type'] ) {
+		switch ( $layout['name'] ) {
+			case 'texte':
+			case 'sponsors':
+			case 'testimoniaux':
+			case 'encart_accueil':
+			case 'services':
+			case 'actualites':
+			case 'appel_a_action':
+			case 'newsletter':
+				$title = '<img src="' . get_theme_file_uri( "assets/img/acf/{$layout['name']}.png" ) . '" style="vertical-align:middle;margin-right:2rem;"/> <strong>' . $title . '</strong>';
+				break;
+			default:'';
+		}
+	}
+	return $title;
+}
+
 if( function_exists('acf_add_local_field_group') ):
 
 acf_add_local_field_group(array(
