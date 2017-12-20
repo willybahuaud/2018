@@ -18,7 +18,7 @@ function layout_title( $title, $field, $layout, $i ) {
 			case 'actualites':
 			case 'appel_a_action':
 			case 'newsletter':
-				$title = '<img src="' . get_theme_file_uri( "assets/img/acf/{$layout['name']}.png" ) . '" style="vertical-align:middle;margin-right:2rem;"/> <strong>' . $title . '</strong>';
+				$title = '<img src="' . get_theme_file_uri( "assets/img/acf/{$layout['name']}.png" ) . '" style="vertical-align:middle;margin-right:2rem;border:1px dashed #ddd;"/> <strong>' . $title . '</strong>';
 				break;
 			default:'';
 		}
