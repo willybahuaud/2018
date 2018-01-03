@@ -999,7 +999,7 @@ form input[type="submit"]:hover:after{
 }
 
 .text li::before{
-	content:'⎯';
+	content:'—';
 	position:absolute;
 	left:0;
 	top:0;
@@ -1280,6 +1280,10 @@ form input[type="submit"]:hover:after{
 	margin-top:2rem;
 }
 
+.frm_checkbox label{
+	margin-top:0;
+}
+
 [class^="comment-form-"] input,
 [class^="comment-form-"] textarea,
 .frm_forms input[type="text"],
@@ -1307,6 +1311,12 @@ form input[type="submit"]:hover:after{
 .frm_forms textarea + .caret,
 .comment-form-comment .caret{
 	margin-top:10px;
+}
+
+.text .frm_forms h3{
+	color:white;
+	box-shadow: -3px 0 0 0 white;
+	margin-top:2rem;
 }
 
 /* [class^="comment-form-"] input:hover,
