@@ -201,7 +201,7 @@ hr{
 	flex-wrap:nowrap;
 }
 
-.menu li{
+.menu > li{
 	padding:.75rem 0;
 }
 
@@ -238,6 +238,49 @@ hr{
 }
 .menu .important a::after{
 	display:none;
+}
+
+@media (min-width:981px) {
+	.menu > li{
+		position:relative;
+	}
+
+	.sub-menu{
+		display:none;
+		position:absolute;
+		top:100%;
+		z-index:100;
+		right:0;
+		background:#020b15;
+		border:2px solid #ef244c;
+		border-top:0;
+		margin:-.75rem -2px 0 -2px;
+		left:0;
+		padding-top:.5rem;
+	}
+
+	.sub-menu a {
+		font-size:1.05rem;
+	}
+
+	li:hover .sub-menu,
+	li:focus .sub-menu{
+		display:block;
+	}
+	li.menu-item-has-children:hover > a,
+	li.menu-item-has-children:focus > a{
+		border:2px solid #ef244c;
+		border-bottom:0;
+		margin:-2px -2px 0 -2px;
+	}
+}
+
+@media (max-width:980px) {
+	.sub-menu,
+	.sub-menu > li,
+	.menu > li{
+		display:inline-flex;
+	}
 }
 
 .cta{
