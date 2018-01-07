@@ -281,6 +281,10 @@ hr{
 	.menu > li{
 		display:inline-flex;
 	}
+
+	.menu a[href="#"]{
+		display:none;
+	}
 }
 
 .cta{

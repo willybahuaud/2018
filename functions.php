@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die();
 }
 
-define( 'DD8_VER', '1.9.7' );
+define( 'DD8_VER', '1.9.9' );
 
 get_template_part( 'functions', 'loop' );
 if ( is_admin() ) {
