@@ -323,3 +323,35 @@ function share() {
 		urlencode( get_permalink( get_queried_object() ) ),
 	) );
 }
+
+/**
+ * Update post_content with ACF flexible fields content on save (page only)
+ */
+add_action( 'acf/save_post', '\DD8\save_page_post_content', 20 );
+function save_page_post_content( $post_id ) {
+	if ( 'page' !== get_post_type( $post_id ) ) {
+		return;
+	}
+
+	if ( ! $blocs = get_post_meta( $post_id, 'blocs', true ) ) {
+		return;
+	}
+
+	/**
+	 * Remove `do_shortcode` filter because of camptix :-/
+	 */
+	remove_action( 'the_content', 'do_shortcode', 11 );
+	$content = '';
+	foreach ( $blocs as $k => $bloc ) {
+		$content .= call_user_func_array( "\DD8\build_{$bloc}", array(
+			'i'  => $k,
+			'id' => $post_id,
+		) );
+	}
+	wp_update_post(
+		array(
+			'ID' => $post_id,
+			'post_content' => $content,
+		)
+	);
+}
