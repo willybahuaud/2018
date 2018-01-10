@@ -235,7 +235,7 @@ function build_services( $i, $id ) {
 
 function build_sponsors( $i, $id ) {
 	$titre = get_post_meta( $id, "blocs_{$i}_titre", true );
-	$niveaux = [ 'platinium' => '', 'or' => '', 'argent' => '', 'bronze' => '' ];
+	$niveaux = [ 'platinium' => '', 'or' => '', 'argent' => '', 'bronze' => '', 'media' => '' ];
 	$sponsors = get_posts( array(
 		'suppress_filters' => false,
 		'post_type'        => 'sponsor',
@@ -256,15 +256,23 @@ function build_sponsors( $i, $id ) {
 	foreach ( $sponsors as $sponsor ) {
 		$niveau = reset( wp_get_object_terms( $sponsor->ID, 'niveau' ) );
 		$lien = get_post_meta( $sponsor->ID, 'lien', true );
+		$size = array_search( $niveau->slug, array_keys( $niveaux ) );
+		if ( 'media' === $size ) {
+			$size = 'or';
+		}
 		$niveaux[ $niveau->slug ] .= vsprintf( '<%1$s%2$s>%3$s</%1$s>', array(
 			$lien ? 'a' : 'div',
 			$lien ? ' href="' . esc_attr( $lien ) . '"' : '',
-			get_the_post_thumbnail( $sponsor, 'sponsor-' . array_search( $niveau->slug, array_keys( $niveaux ) ) ),
+			get_the_post_thumbnail( $sponsor, 'sponsor-' . $size ),
 		) );
 	}
-	$out = vsprintf( '<section id="description" class="description sponsors-block">%1$s%2$s</section>', array(
+	$medias = ! empty( $niveaux[ 'media' ] ) ? $niveaux[ 'media' ] : false; 
+	unset( $niveaux[ 'media' ] );
+
+	$out = vsprintf( '<section id="description" class="description sponsors-block">%1$s%2$s%3$s</section>', array(
 		$titre ? '<h2 class="titre">' . wp_kses_post( nl2br( $titre ) ) . '</h2>' : '',
 		'<div class="palier">' . implode( '</div><div class="palier">', $niveaux ) . '</div>',
+		$medias ? '<h2 class="titre">Et avec le soutien de</h2><div class="palier">' . $medias . '</div>' : '',
 	) );
 	return $out;
 }
