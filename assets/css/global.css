@@ -595,7 +595,8 @@ form input[type="submit"]{
 	transition:none;
 }
 
-.frm_forms select{
+.frm_forms select,
+#tix form select{
 	width: 100%;
     height: 2.76rem;
     border: 2px solid white;
@@ -1034,6 +1035,7 @@ form input[type="submit"]:hover:after{
 .text * + p,
 .text * + h3,
 .text * + h2,
+.text * + table,
 .text * + img,
 .text * + blockquote,
 .text * + ul,
@@ -1114,6 +1116,35 @@ form input[type="submit"]:hover:after{
 	font-size:1.5rem;
 	color:#1ae7f0;
 	box-shadow:-3px 0 0 0 rgba(255,255,255,.2);
+}
+
+.text table{
+	width:100%;
+	border-collapse:separate; 
+	border-spacing:0 .5rem;
+	text-align:center;
+}
+
+.text tbody td{
+	border-top:2px solid var(--primary);
+	padding-top: .5rem;
+	vertical-align:middle;
+}
+
+.tix_tickets_table.tix-attendee-form{
+    border:2px solid var(--dark2);
+    margin-bottom:1em;
+	padding:0 1rem .75rem;
+	border-radius:4px;
+}
+
+.tix_tickets_table.tix-attendee-form tbody td{
+	border:none;
+	vertical-align:middle;
+}
+
+.text form * + table{
+	margin-top:1rem;
 }
 
 .link-to-comments{
@@ -1327,6 +1358,7 @@ form input[type="submit"]:hover:after{
 }
 
 [class^="comment-form-"] label,
+#tix form label,
 .frm_forms label{
 	display:block;
 	font:1rem var(--font1);
@@ -1341,6 +1373,7 @@ form input[type="submit"]:hover:after{
 
 [class^="comment-form-"] input,
 [class^="comment-form-"] textarea,
+#tix form input[type="text"],
 .frm_forms input[type="text"],
 .frm_forms textarea{
 	border:2px solid white;
@@ -1354,6 +1387,10 @@ form input[type="submit"]:hover:after{
 	font:1rem / 1.5 var(--font2);
 }
 
+#tix form input[type="text"]{
+	font:1rem 'Realtime rounded', monospace;
+}
+
 .frm_forms .caret,
 [class^="comment-form-"] .caret{
 	--primary:white;
@@ -1361,6 +1398,10 @@ form input[type="submit"]:hover:after{
 
 .frm_forms .caret{
 	height:1.5em;
+}
+
+#tix form .caret{
+	height:1.25em;
 }
 
 .frm_forms textarea + .caret,
@@ -1372,6 +1413,36 @@ form input[type="submit"]:hover:after{
 	color:white;
 	box-shadow: -3px 0 0 0 white;
 	margin-top:2rem;
+}
+
+body .tix-required-star{
+	color:var(--secondary-dark);
+}
+
+.tix-ticket-form a{
+	border:2px solid var(--primary);
+	color:var(--primary);
+	padding:.5em 1em;
+	font:1rem 'Realtime rounded', monospace;
+	border-radius:2px;
+}
+
+body .tix-info {
+	background:var(--secondary-dark);
+	color:black;
+	margin-bottom:.5rem;
+    border:none;
+}
+
+body .tix-error {
+	background:var(--middle);
+	color:black;
+	margin-bottom:.5rem;
+    border:none;
+}
+
+#tix-errors{
+	margin-bottom:2rem;
 }
 
 /* [class^="comment-form-"] input:hover,
@@ -1398,6 +1469,7 @@ form input[type="submit"]:hover:after{
 }
 
 .form-submit .submit,
+#tix form .submit,
 .frm_forms .frm_button_submit{
 	margin-top:3.4rem;
     color:var(--primary);
@@ -1411,7 +1483,9 @@ form input[type="submit"]:hover:after{
 
 .form-submit .submit:hover,
 .form-submit .submit:focus,
+#tix form .submit:focus,
 .frm_forms .frm_button_submit:hover,
+#tix form .submit:hover,
 .frm_forms .frm_button_submit:focus{
 	background:white;
 	color:var(--primary);

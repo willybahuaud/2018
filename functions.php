@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die();
 }
 
-define( 'DD8_VER', '2.0.0' );
+define( 'DD8_VER', '2.0.2' );
 
 get_template_part( 'functions', 'loop' );
 if ( is_admin() ) {
@@ -200,3 +200,16 @@ add_action( 'rest_api_init', function() {
 		'callback' => '\DD8\add_subscriber',
 	) );
 } );
+
+/**
+ * Camptix Filters
+ */
+add_filter( 'camptix_register_order_summary_header', '\DD8\camptix_register_order_title' );
+function camptix_register_order_title( $title ) {
+	return __( 'Résumé des tickets', 'dd8' );
+}
+
+add_filter( 'camptix_register_registration_info_header', '\DD8\camptix_register_tickets_title' );
+function camptix_register_tickets_title( $title ) {
+	return __( 'Détails des participants', 'dd8' );
+}

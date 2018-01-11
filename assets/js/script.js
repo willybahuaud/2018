@@ -47,6 +47,7 @@ jQuery(document).ready(function($){
     .myset textarea, \
     .frm_forms input[type="text"], \
     .frm_forms textarea, \
+    #tix form input[type="text"], \
     [class^="comment-form-"] input[type="text"], \
     [class^="comment-form-"] textarea').each(function () {
         $el = $(this);
