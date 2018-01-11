@@ -272,7 +272,7 @@ function build_sponsors( $i, $id ) {
 	$out = vsprintf( '<section id="description" class="description sponsors-block">%1$s%2$s%3$s</section>', array(
 		$titre ? '<h2 class="titre">' . wp_kses_post( nl2br( $titre ) ) . '</h2>' : '',
 		'<div class="palier">' . implode( '</div><div class="palier">', $niveaux ) . '</div>',
-		$medias ? '<h3 class="soutien">' . __( 'Et avec le soutien de', 'dd8' ) . '</h3><div class="palier">' . $medias . '</div>' : '',
+		$medias ? '<h2 class="titre">Et avec le soutien de</h2><div class="palier">' . $medias . '</div>' : '',
 	) );
 	return $out;
 }
