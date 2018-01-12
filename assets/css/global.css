@@ -607,6 +607,28 @@ form input[type="submit"]{
 	box-sizing:border-box;
 }
 
+#tix #camptix-need-invoice + label,
+#tix .camptix-invoice-details label{
+	display:inline-block;
+    margin:0;
+    padding:0;
+    vertical-align:middle;
+}
+
+.camptix-invoice-details{
+	border:2px solid var(--primary);
+	border-radius:6px;
+	padding:0 1rem;
+}
+
+.text .camptix-invoice-details tbody td{
+	border:none;
+}
+
+.camptix-invoice-details td.tix-right{
+	width:60%;
+}
+
 /* 
 form button:hover:after,
 form input[type="submit"]:hover:after{

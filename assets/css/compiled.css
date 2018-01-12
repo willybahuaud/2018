@@ -603,6 +603,28 @@ form input[type="submit"]{
 	box-sizing:border-box;
 }
 
+#tix #camptix-need-invoice + label,
+#tix .camptix-invoice-details label{
+	display:inline-block;
+    margin:0;
+    padding:0;
+    vertical-align:middle;
+}
+
+.camptix-invoice-details{
+	border:2px solid #ef244c;
+	border-radius:6px;
+	padding:0 1rem;
+}
+
+.text .camptix-invoice-details tbody td{
+	border:none;
+}
+
+.camptix-invoice-details td.tix-right{
+	width:60%;
+}
+
 /* 
 form button:hover:after,
 form input[type="submit"]:hover:after{
@@ -1383,6 +1405,7 @@ form input[type="submit"]:hover:after{
 [class^="comment-form-"] textarea,
 .frm_forms input[type="text"],
 #tix form input[type="text"],
+#tix form textarea,
 .frm_forms textarea{
 	border:2px solid white;
 	width:100%;
@@ -1413,6 +1436,7 @@ form input[type="submit"]:hover:after{
 }
 
 .frm_forms textarea + .caret,
+#tix form textarea + .caret,
 .comment-form-comment .caret{
 	margin-top:10px;
 }
