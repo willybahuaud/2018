@@ -1036,6 +1036,11 @@ form input[type="submit"]:hover:after{
 	font-weight:400;
 }
 
+.no-image .titre-single{
+	position:relative;
+	bottom:-.25em;
+}
+
 .content-wrapper{
 	font-size:1.2rem;
 	width:var(--restreint);

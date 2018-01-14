@@ -1042,6 +1042,11 @@ form input[type="submit"]:hover:after{
 	font-weight:400;
 }
 
+.no-image .titre-single{
+	position:relative;
+	bottom:-.25em;
+}
+
 .content-wrapper{
 	font-size:1.2rem;
 	width:720px;
@@ -1154,10 +1159,59 @@ form input[type="submit"]:hover:after{
 }
 
 .text tbody td{
-	border-top:2px solid #ef244c;
-	padding-top: .5rem;
+	border-top:1px solid #33334f;
+	padding-top:1rem;
+	padding-bottom:.5rem;
 	vertical-align:middle;
+	font-weight:400;
 }
+
+.text tbody tr:first-child td{
+	border-top:1px solid #ef244c;
+}
+
+.text table th, .text table td {
+    padding-left:2rem;
+    padding-right:2rem;
+}
+
+.tix-column-description{
+	text-align:left;
+}
+
+.tix-column-description strong{
+	font-weight:400;
+}
+
+#tix input[type="submit"]{
+	display:block;
+    width:auto;
+    float:none !important;
+    margin:1em auto;
+    border-radius:2px;
+	padding:.5rem 2rem;
+	font-size:1.25rem;
+	background:white;
+	font-family:'Realtime rounded', monospace;
+}
+
+.text table th{
+	font-weight:600;
+	color:#ef244c;
+	font-family:'Realtime rounded', monospace;
+	text-transform:uppercase;
+	position:relative;
+}
+
+.text table th + th::before{
+	content:'';
+	position:absolute;
+	top:100%;
+	left:0;
+	height:1rem;
+	border-left:1px solid #ef244c;
+}
+
 
 .tix_tickets_table.tix-attendee-form{
     border:2px solid #4829a1;

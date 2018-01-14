@@ -45,12 +45,13 @@ function content_filter( $content ) {
 add_action( 'loop_start', '\DD8\willy_loop_start' );
 function willy_loop_start() {
 	if ( is_page() && ! is_front_page() ) {
-		vprintf( '<section class="image-article-wrapper">
+		vprintf( '<section class="image-article-wrapper %3$s">
             <div class="titre-single"><h1>%1$s</h1></div>
             %2$s
         </section>', array(
             the_title( '', '', false ),
-            has_post_thumbnail() ? get_the_post_thumbnail( get_queried_object(), 'header-single' ) : '',
+			has_post_thumbnail() ? get_the_post_thumbnail( get_queried_object(), 'header-single' ) : '',
+			has_post_thumbnail() ? '' : ' no-image',
         ) );
 	}
 	$news_id = get_option( 'page_for_posts' );
