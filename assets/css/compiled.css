@@ -603,6 +603,52 @@ form input[type="submit"]{
 	box-sizing:border-box;
 }
 
+#tix{
+	position:relative;
+	width:1115px;
+	left:50%;
+	transform:translateX(-50%);
+}
+
+select[name="tix_payment_method"]{
+	display:none;
+}
+
+@media (max-width:1440px){
+	#tix{
+		width:auto;
+		left:auto;
+		transform:initial;
+	}
+	.text table th, .text table td {
+		padding-left:1rem;
+		padding-right:1rem;
+	}
+}
+
+#tix form select{
+	-webkit-appearance: none;
+    padding: 0 .5em;
+	text-align-last: center;
+	border-radius:0;
+	border:2px solid #ef244c;
+	background-image:url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" width="100" height="100" viewBox="0 0 2 1"><path d="M.5 0L1 .3 0 .3 .5 0M0 .7 1 .7 .5 1Z" fill="%23ef244c"/></svg>');
+	background-repeat:no-repeat;
+	background-size:20px 18px;
+	background-position:right center;
+	outline:none;
+}
+
+#tix .tix-attendee-form select{
+	border-color:white;
+	color:#ef244c;
+	text-align-last:left;
+}
+
+#tix form select:focus{
+	border-color:white;
+}
+
 #tix #camptix-need-invoice + label,
 #tix .camptix-invoice-details label{
 	display:inline-block;
@@ -612,9 +658,12 @@ form input[type="submit"]{
 }
 
 .camptix-invoice-details{
-	border:2px solid #ef244c;
-	border-radius:6px;
-	padding:0 1rem;
+	border:1px solid #ef244c;
+	padding:0;
+}
+
+#tix .camptix-invoice-details td{
+	border:none;
 }
 
 .text .camptix-invoice-details tbody td{
@@ -1170,6 +1219,10 @@ form input[type="submit"]:hover:after{
 	border-top:1px solid #ef244c;
 }
 
+.text .tix-row-total td {
+    border-top-color:#ef244c;
+}
+
 .text table th, .text table td {
     padding-left:2rem;
     padding-right:2rem;
@@ -1195,6 +1248,11 @@ form input[type="submit"]:hover:after{
 	font-family:'Realtime rounded', monospace;
 }
 
+#tix input[type="submit"]:hover,
+#tix input[type="submit"]:focus{
+	background-color:#ef244c;
+}
+
 .text table th{
 	font-weight:600;
 	color:#ef244c;
@@ -1203,7 +1261,13 @@ form input[type="submit"]:hover:after{
 	position:relative;
 }
 
-.text table th + th::before{
+.text .tix-row-total td{
+	color:#ef244c;
+	position:relative;
+}
+
+.text table th + th::before,
+.text .tix-row-total td + td::before{
 	content:'';
 	position:absolute;
 	top:100%;
@@ -1212,17 +1276,52 @@ form input[type="submit"]:hover:after{
 	border-left:1px solid #ef244c;
 }
 
+.text .tix-row-total td + td::before{
+	top:-.5rem;
+}
+
+.text .tix-attendee-form th{
+	color:white;
+	border-bottom:1px solid #33334f;
+	padding-bottom:1rem;
+	font-family:-apple-system, Helvetica Neue, sans-serif;
+	font-weight:400;
+	text-transform:initial;
+}
 
 .tix_tickets_table.tix-attendee-form{
-    border:2px solid #4829a1;
     margin-bottom:1em;
-	padding:0 1rem .75rem;
+	padding-bottom:.75rem;
 	border-radius:4px;
 }
 
 .tix_tickets_table.tix-attendee-form tbody td{
 	border:none;
 	vertical-align:middle;
+	padding-top:0;
+}
+
+.tix_tickets_table.tix-attendee-form .tix-row-first-name td{
+	padding-top:2rem;
+}
+
+.tix_tickets_table.tix-attendee-form tbody .tix-left,
+#tix .camptix-invoice-details .tix-left{
+	font-family:'Realtime rounded', monospace;
+	text-transform:uppercase;
+	text-align:right;
+	padding-right:1rem;
+	font-size:.9rem;
+	color:white;
+}
+
+.tix_tickets_table.tix-attendee-form tbody .tix-right,
+.camptix-invoice-details tbody .tix-right{
+	padding-left:0;
+}
+
+#tix form label[for="camptix-need-invoice"]{
+	text-transform:initial;
 }
 
 .text form * + table{
@@ -1472,8 +1571,10 @@ form input[type="submit"]:hover:after{
 	font:1rem / 1.5 -apple-system, Helvetica Neue, sans-serif;
 }
 
-#tix form input[type="text"]{
+#tix form input[type="text"],
+#tix form textarea{
 	font:1rem 'Realtime rounded', monospace;
+	border-radius:0;
 }
 
 .frm_forms .caret,
@@ -1502,7 +1603,9 @@ form input[type="submit"]:hover:after{
 }
 
 body .tix-required-star{
-	color:#1fc2b9;
+	color:#ef244c;
+	vertical-align:text-bottom;
+	margin-left:-.5em;
 }
 
 .tix-ticket-form a{
@@ -1513,35 +1616,88 @@ body .tix-required-star{
 	border-radius:2px;
 }
 
-body .tix-info {
+body .tix-info,
+body .tix-error{
 	background:#1fc2b9;
 	color:black;
 	margin-bottom:.5rem;
-    border:none;
+	border:none;
+	border-radius:0;
+	font:1rem 'Realtime rounded', monospace;
+	text-transform:uppercase;
+	padding:.5rem 1rem;
 }
 
 body .tix-error {
-	background:#F88B62;
-	color:black;
-	margin-bottom:.5rem;
-    border:none;
+	background:#ef244c;
 }
 
 #tix-errors{
 	margin-bottom:2rem;
 }
+#tix-errors,
+#tix table,
+.camptix-invoice-toggle-wrapper{
+    max-width:796px;
+    margin-left:auto;
+	margin-right:auto;
+}
 
-/* [class^="comment-form-"] input:hover,
-[class^="comment-form-"] textarea:hover,
-[class^="comment-form-"] input:focus,
-[class^="comment-form-"] textarea:focus,
-.frm_forms input[type="text"]:hover,
-.frm_forms textarea:hover,
-.frm_forms input[type="text"]:focus,
-.frm_forms textarea:focus{
-	background:white;
-	color:var(--primary);
-} */
+#tix .tix-left{
+	width:220px;
+}
+
+@media (max-width:650px) {
+	.tix_tickets_table thead{
+		display:none;
+	}
+	.tix-order-summary tr:not(.tix-row-total),
+	tr[class^='tix-ticket-']{
+		display: grid;
+		grid-template-columns:repeat(2, 1fr);
+		grid-template-rows:repeat(3, 1fr);
+	}
+	tr[class^='tix-ticket-'] td:first-child,
+	.tix-order-summary tr:not(.tix-row-total) td:first-child{
+		grid-column:1;
+		grid-row:1 / -1;
+		display:flex;
+	}
+	tr[class^='tix-ticket-'] td:first-child strong,
+	.tix-order-summary tr:not(.tix-row-total) td:first-child strong{
+		margin:auto;
+	}
+	tr[class^='tix-ticket-'] td + td,
+	.tix-order-summary tr:not(.tix-row-total) td + td{
+		grid-column:2;
+	}
+	#tix tr[class^='tix-ticket-'] td,
+	#tix .tix-order-summary tr:not(.tix-row-total) td{
+		border:1px solid #33334f;
+	}
+	.tix-row-total td[colspan="3"]{
+		display:none;
+	}
+	#tix .tix-order-summary .tix-column-description{
+		width:auto;
+	}
+	.text .tix-row-total td + td::before{
+		display:none;
+	}
+	html[lang="fr-FR"] .tix-column-per-ticket::before{content:'Prix unitaire : ';}
+	html[lang="fr-FR"] .tix-column-quantity::before{content:'Quantité : ';}
+	html[lang="fr-FR"] tr[class^='tix-ticket-'] td:nth-child(2)::before{content: 'Prix : ';}
+	html[lang="fr-FR"] tr[class^='tix-ticket-'] td:nth-child(3)::before{content: 'Restants : ';}
+	html[lang="en-US"] .tix-column-per-ticket::before{content:'Unit price: ';}
+	html[lang="en-US"] .tix-column-quantity::before{content:'Quantity: ';}
+	html[lang="en-US"] tr[class^='tix-ticket-'] td:nth-child(2)::before{content: 'Price: ';}
+	html[lang="en-US"] tr[class^='tix-ticket-'] td:nth-child(3)::before{content: 'Remaining: ';}
+
+	.text table th, .text table td {
+		padding-left:.5rem;
+		padding-right:.5rem;
+	}
+}
 
 .comment-form-comment{
 	width:100%;
