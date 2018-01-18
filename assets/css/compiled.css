@@ -1146,7 +1146,14 @@ form input[type="submit"]:hover:after{
 	top:0;
 }
 
-.text img{
+.text .aligncenter{
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+	text-align:center;
+}
+
+.text .alignnone{
 	width:120%;
 	display:block;
 	height:auto;
@@ -2230,7 +2237,7 @@ body .tix-error {
 		transform:translateX(-50%);
 	}
 
-	.text img{
+	.text .alignnone{
 		width:100%;
 		margin-left:0;
 	}
