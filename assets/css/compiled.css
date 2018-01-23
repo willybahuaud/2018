@@ -628,6 +628,8 @@ select[name="tix_payment_method"]{
 
 #tix form select{
 	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
     padding: 0 .5em;
 	text-align-last: center;
 	border-radius:0;
