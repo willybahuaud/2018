@@ -313,8 +313,8 @@ function build_encart_accueil( $i, $id ) {
 }
 
 function get_metas( $post = null ) {
-	$author = get_the_author_meta( 'display_name', $post->author );
-	if ( $url = get_the_author_meta( 'url', $post->author ) ) {
+	$author = get_the_author_meta( 'display_name', $post->post_author );
+	if ( $url = get_the_author_meta( 'url', $post->post_author ) ) {
 		$author = sprintf( '<a href="%s">%s</a>', $url, $author );
 	}
 	return '<div class="metas">' . sprintf( __( 'par %s', 'dd8' ), $author ) .
