@@ -115,22 +115,23 @@ function build_programme( $i, $id ) {
 		$grid = $deux_salles ? 'two' : $salle;
 		$time = strtotime( '1/1/1970' . $heure );
 
-		$inner = vsprintf( '<div class="elem %5$s">
+		$inner = vsprintf( '<div class="elem %5$s color-%6$s">
 		<div class="heure">%1$s</div>
 		<div class="link-wrapper">%2$s
 		%3$s
 		%4$s</div>
 		</div>',array(
 			date_i18n( 'H:i', $time ),
-			$non_evenement ? '<div class="event-titre">' . esc_html( $titre ) . '</div>' : '<a class="event-titre" href="' . get_the_title( $conference ) . '">' . esc_html( get_the_title( $conference ) ) . '</a>',
+			$non_evenement ? '<div class="event-titre">' . esc_html( $titre ) . '</div>' : '<a class="event-titre" href="' . get_permalink( $conference ) . '">' . esc_html( get_the_title( $conference ) ) . '</a>',
 			$orateur ? sprintf(
 				'<div class="orateur">%3$s%1$s
 				%2$s
-				</div>', esc_html( $orateur ), $twitter_orateur ? sprintf( '<a href="https://twitter.com/%1$s">@%1$s</a>', esc_html( $twitter_orateur ) ) : '',
+				</div>', esc_html( $orateur ), $twitter_orateur ? sprintf( '(<a href="https://twitter.com/%1$s">@%1$s</a>)', esc_html( $twitter_orateur ) ) : '',
 				__( 'Animé par ', 'dd8' )
 			) : '',
-			$niveau && ! $non_evenement ? sprintf( '<span class="niveau niveau-%1$s">%1$s</span>', esc_attr( $niveau ) ) : '',
+			$niveau && ! $non_evenement ? sprintf( '<span class="niveau niveau-%1$s" title="Niveau %1$s">%1$s</span>', esc_attr( $niveau ) ) : '',
 			$non_evenement ? 'off' : '',
+			esc_attr( $grid ),
 		) );
 		
 		$content[ $grid ][ $time ] = $inner;

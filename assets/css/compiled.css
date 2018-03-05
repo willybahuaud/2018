@@ -1991,6 +1991,8 @@ body .tix-error {
 .bloc-programme .event-titre{
 	font-size:1.25rem;
 	display:block;
+	line-height:1.4;
+	padding-right:1.5rem;
 }
 
 .bloc-programme .elem{
@@ -2004,6 +2006,17 @@ body .tix-error {
 
 .bloc-programme .orateur{
 	margin-top:.5em;
+}
+
+.bloc-programme .orateur a{
+	z-index:2;
+	position:relative;
+}
+
+.bloc-programme .orateur a:hover,
+.bloc-programme .orateur a:focus{
+	color:#1ae7f0;
+	text-decoration:underline;
 }
 
 .programme-bloc-wrapper{
@@ -2064,21 +2077,21 @@ body .tix-error {
 	position:absolute;
 	right:.5em;
 	bottom:.5em;
-	width:19px;
-	height:21px;
+	width:26px;
+	height:26px;
 	display:block;
 	overflow:hidden;
-	text-indent:25px;
-	background-image:url(../img/niveau-debutant.svg);
+	text-indent:26px;
+	background-image:url(../img/easy-level.2.svg);
 	background-size:contain;
 	background-repeat:no-repeat;
 }
 
 .bloc-programme .niveau-initie {
-	background-image: url(../img/niveau-initie.svg);
+	background-image: url(../img/average-level.2.svg);
 }
 .bloc-programme .niveau-avance {
-	background-image: url(../img/niveau-avance.svg);
+	background-image: url(../img/hard-level.2.svg);
 }
 
 @media (max-width:1440px) {
@@ -2193,6 +2206,59 @@ body .tix-error {
 }
 
 @media (max-width:980px) {
+	.bloc-programme{
+		width:90vw;
+	}
+
+	.bloc-programme .salle-titres,
+	.bloc-programme .salle-titres+div::before {
+		display:none;
+	}
+
+	.bloc-programme .salle-titres+div{
+		border-top:1px solid #33334f;
+	}
+
+	.bloc-programme .blue,
+	.bloc-programme .red{
+		float:none;
+		width:100%;
+		display:block;
+	}
+	.bloc-programme .programme-blocs,
+	.bloc-programme .elem{
+		display:block;
+	}
+
+	.bloc-programme .elem.color-red{
+		border-left:1px solid #ef244c;
+	}
+
+	.bloc-programme .elem.color-blue {
+		border-left: 1px solid #1ae7f0;
+	}
+
+	.bloc-programme .programme-blocs> :nth-child(2){
+		border-left:0;
+	}
+
+	body .bloc-programme .deux .heure,
+	body .bloc-programme .blue .elem .heure,
+	body .bloc-programme .blue .elem + .elem .heure,
+	body .bloc-programme .red .elem .heure{
+		position:absolute;
+		display:block !important;
+		left:1rem;
+		top:1.25rem;
+		right:auto;
+		color:white;
+		background:#4829a1;
+		padding:.25rem;
+	}
+
+	.bloc-programme .link-wrapper{
+		padding-left:5rem;
+	}
 
 	.comment{
 		width:100%;
