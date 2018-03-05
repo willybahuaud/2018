@@ -1990,13 +1990,16 @@ body .tix-error {
 
 .bloc-programme .event-titre{
 	font-size:1.25rem;
+	display:block;
 }
 
 .bloc-programme .elem{
 	border-bottom:1px solid #33334f;
 	flex-grow:4;
-	padding:1em;
 	position:relative;
+	z-index:1;
+	display: flex;
+	flex-direction: column;
 }
 
 .bloc-programme .orateur{
@@ -2005,6 +2008,28 @@ body .tix-error {
 
 .programme-bloc-wrapper{
 	position:relative;
+}
+
+.bloc-programme .link-wrapper{
+	overflow:hidden;
+	position:relative;
+	padding:1em;
+	flex-grow:3;
+}
+
+.bloc-programme .link-wrapper a.event-titre::before{
+	content:'';
+	position:absolute;
+	top:0;
+	right:0;
+	bottom:0;
+	left:0;
+	display:block;
+}
+
+.bloc-programme .link-wrapper a.event-titre:hover,
+.bloc-programme .link-wrapper a.event-titre:focus{
+	color:#875eff;
 }
 
 .bloc-programme .blue,

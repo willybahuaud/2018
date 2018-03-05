@@ -117,9 +117,9 @@ function build_programme( $i, $id ) {
 
 		$inner = vsprintf( '<div class="elem %5$s">
 		<div class="heure">%1$s</div>
-		%2$s
+		<div class="link-wrapper">%2$s
 		%3$s
-		%4$s
+		%4$s</div>
 		</div>',array(
 			date_i18n( 'H:i', $time ),
 			$non_evenement ? '<div class="event-titre">' . esc_html( $titre ) . '</div>' : '<a class="event-titre" href="' . get_the_title( $conference ) . '">' . esc_html( get_the_title( $conference ) ) . '</a>',
