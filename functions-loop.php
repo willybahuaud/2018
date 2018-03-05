@@ -122,7 +122,7 @@ function build_programme( $i, $id ) {
 		%4$s</div>
 		</div>',array(
 			date_i18n( 'H:i', $time ),
-			$non_evenement ? '<div class="event-titre">' . esc_html( $titre ) . '</div>' : '<a class="event-titre" href="' . get_permalink( $conference ) . '">' . esc_html( get_the_title( $conference ) ) . '</a>',
+			$non_evenement ? '<div class="event-titre">' . wp_kses( $titre, array( 'del' => true, 'br' => true ) ) . '</div>' : '<a class="event-titre" href="' . get_permalink( $conference ) . '">' . wp_kses( get_the_title( $conference ), array( 'del' => true, 'br' => true ) ) . '</a>',
 			$orateur ? sprintf(
 				'<div class="orateur">%3$s%1$s
 				%2$s
