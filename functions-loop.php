@@ -96,6 +96,74 @@ function build_texte( $i, $id ) {
 	) );
 }
 
+function build_programme( $i, $id ) {
+	$tracks  = get_post_meta( $id, "blocs_{$i}_tracks", true );
+	$wrapper = '<div class="bloc-programme"><div class="salle-titres"><div class="salle-titre salle-1">%1$s</div><div class="salle-titre salle-2">%2$s</div></div>%3$s</div>';
+	$chargement = array();
+	$content = array( 'red' => array(), 'blue' => array(), 'two' => array() );
+	for ( $j = 0; $j < $tracks; $j++ ) {
+		$salle           = get_post_meta( $id, "blocs_{$i}_tracks_{$j}_salle", true );
+		$heure           = get_post_meta( $id, "blocs_{$i}_tracks_{$j}_heure", true );
+		$deux_salles     = get_post_meta( $id, "blocs_{$i}_tracks_{$j}_deux_salles", true );
+		$non_evenement   = get_post_meta( $id, "blocs_{$i}_tracks_{$j}_non_evenement", true );
+		$titre           = get_post_meta( $id, "blocs_{$i}_tracks_{$j}_titre", true );
+		$conference      = get_post_meta( $id, "blocs_{$i}_tracks_{$j}_conference", true );
+		$orateur         = get_post_meta( $id, "blocs_{$i}_tracks_{$j}_orateur", true );
+		$twitter_orateur = get_post_meta( $id, "blocs_{$i}_tracks_{$j}_twitter_orateur", true );
+		$niveau          = get_post_meta( $id, "blocs_{$i}_tracks_{$j}_niveau", true );
+
+		$grid = $deux_salles ? 'two' : $salle;
+		$time = strtotime( '1/1/1970' . $heure );
+
+		$inner = vsprintf( '<div class="elem %5$s color-%6$s">
+		<div class="heure">%1$s</div>
+		<div class="link-wrapper">%2$s
+		%3$s
+		%4$s</div>
+		</div>',array(
+			date_i18n( 'H:i', $time ),
+			$non_evenement ? '<div class="event-titre">' . esc_html( $titre ) . '</div>' : '<a class="event-titre" href="' . get_permalink( $conference ) . '">' . esc_html( get_the_title( $conference ) ) . '</a>',
+			$orateur ? sprintf(
+				'<div class="orateur">%3$s%1$s
+				%2$s
+				</div>', esc_html( $orateur ), $twitter_orateur ? sprintf( '(<a href="https://twitter.com/%1$s">@%1$s</a>)', esc_html( $twitter_orateur ) ) : '',
+				__( 'Animé par ', 'dd8' )
+			) : '',
+			$niveau && ! $non_evenement ? sprintf( '<span class="niveau niveau-%1$s" title="Niveau %1$s">%1$s</span>', esc_attr( $niveau ) ) : '',
+			$non_evenement ? 'off' : '',
+			esc_attr( $grid ),
+		) );
+		
+		$content[ $grid ][ $time ] = $inner;
+
+		// pattern de chargement
+		$chargement[] = array( $grid, $time ); 
+	
+	}
+	$out = '';
+	$case = array( 'blue' => array(), 'red' => array() );
+	$total = count( $chargement ) - 1;
+	foreach ( $chargement as $k => $el ) {
+		if ( 'two' !== $el[0] ) {
+			$case[ $el[0] ][] = $content[ $el[0] ][ $el[1] ];
+		}
+		if ( ( $k == $total || $chargement[ $k + 1 ][1] === $chargement[ $k + 2 ][1] || 'two' === $el[0] ) && $case != array( 'blue' => array(), 'red' => array() ) ) {
+			$out .= '<div class="programme-blocs programme-bloc-wrapper"><div class="red">' . implode( $case['red'] ) . '</div><div class="blue">' . implode( $case['blue'] ) . '</div></div>';
+			$case = array( 'blue' => array(), 'red' => array() );
+		}
+		if ( 'two' === $el[0] ) {
+			$out .= '<div class="deux programme-bloc-wrapper">' . $content[ $el[0] ][ $el[1] ] . '</div>';
+			$case = array( 'blue' => array(), 'red' => array() );
+		}
+	}
+
+	return vsprintf( $wrapper, array(
+		esc_html__( 'Salle Red', 'dd8' ),
+		esc_html__( 'Salle Blue', 'dd8' ),
+		$out,
+	) );
+}
+
 function build_testimoniaux( $i, $id ) {
 	$titre   = get_post_meta( $id, "blocs_{$i}_titre", true );
 	$shuffle = get_post_meta( $id, "blocs_{$i}_shuffle", true );

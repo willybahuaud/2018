@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die();
 }
 
-define( 'DD8_VER', '2.0.8' );
+define( 'DD8_VER', time() ); //'2.0.8' );
 
 get_template_part( 'functions', 'loop' );
 if ( is_admin() ) {
@@ -18,7 +18,7 @@ if ( is_admin() ) {
  */
 add_action( 'wp_enqueue_scripts', '\DD8\enqueue_scripts' );
 function enqueue_scripts(){
-    wp_register_style( 'style', get_theme_file_uri( 'assets/css/minified.css' ), null, DD8_VER );
+    wp_register_style( 'style', get_theme_file_uri( 'assets/css/compiled.css' ), null, DD8_VER );
     wp_enqueue_style( 'style' );
 
     wp_deregister_script( 'jquery' );
