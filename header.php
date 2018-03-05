@@ -8,9 +8,11 @@
     <div class="inner">
         <div class="headline large">
             <?php
+            $img = '<img src="https://2018.wptech.fr/wp-content/uploads/2018/03/wp-tech-logo-with-title.png" alt="WP Tech 2018"/>';
+            //WPTECH<span>[2018]</span>
                 $logo = is_front_page() ?
-                '<div class="logo">WPTECH<span>[2018]</span></div>' :
-                '<a class="logo" href="' . home_url( '/' ) . '">WPTECH<span>[2018]</span></a>';
+                '<div class="logo">' . $img . '</div>' :
+                '<a class="logo" href="' . home_url( '/' ) . '">' . $img . '</a>';
                 echo $logo;
             ?>
             <div class="slogan">

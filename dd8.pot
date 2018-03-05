@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-11 14:55+0000\n"
+"POT-Creation-Date: 2018-01-12 13:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -30,11 +30,11 @@ msgstr ""
 msgid "Commentaires"
 msgstr ""
 
-#: single.php:21
+#: single.php:18
 msgid "Précédent"
 msgstr ""
 
-#: single.php:22
+#: single.php:19
 msgid "Suivant"
 msgstr ""
 
@@ -62,6 +62,14 @@ msgstr ""
 msgid "Il semble y avoir un soucis avec votre adresse email."
 msgstr ""
 
+#: functions.php:209
+msgid "Résumé des tickets"
+msgstr ""
+
+#: functions.php:214
+msgid "Détails des participants"
+msgstr ""
+
 #: header.php:17
 msgid "L’unique événement WordPress technique annuel"
 msgstr ""
@@ -78,20 +86,24 @@ msgstr ""
 msgid "En savoir plus"
 msgstr ""
 
-#: functions-loop.php:210
+#: functions-loop.php:211
 msgid "Votre email"
 msgstr ""
 
-#: functions-loop.php:211
+#: functions-loop.php:212
 msgid "Je m’abonne"
 msgstr ""
 
-#: functions-loop.php:273
+#: functions-loop.php:275
+msgid "Et avec le soutien de"
+msgstr ""
+
+#: functions-loop.php:319
 #, php-format
 msgid "par %s"
 msgstr ""
 
-#: functions-loop.php:284
+#: functions-loop.php:330
 msgid "Partager sur"
 msgstr ""
 
