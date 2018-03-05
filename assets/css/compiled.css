@@ -1947,6 +1947,115 @@ body .tix-error {
 	padding-top:0;
 }
 
+.bloc-programme{
+	max-width:1600px;
+	width:80vw;
+	margin-left:50%;
+	transform:translateX(-50%);
+}
+
+.bloc-programme .salle-titres{
+	display:flex;
+	overflow:hidden;
+	font:600 1.5rem 'Realtime rounded', monospace;
+	text-transform:uppercase;
+	text-align:center;
+}
+
+.bloc-programme .salle-titres + div::before{
+	content:'';
+	position:absolute;
+	left:50%;
+	top:0;
+	height:30px;
+	margin-top:-15px;
+	border-left:2px solid #33334f;
+}
+
+.bloc-programme .salle-titre{
+	border-bottom:1px solid;
+	color:#ef244c;
+	width:50%;
+	float:left;
+	padding-bottom:.25em;
+}
+
+.bloc-programme .salle-2 {
+	color: #1ae7f0;
+}
+
+.bloc-programme .off{
+	background-image:repeating-linear-gradient(-45deg, #33334f, #33334f 1px, transparent 1px, transparent 6px);
+}
+
+.bloc-programme .event-titre{
+	font-size:1.25rem;
+}
+
+.bloc-programme .elem{
+	border-bottom:1px solid #33334f;
+	flex-grow:4;
+	padding:1em;
+	position:relative;
+}
+
+.bloc-programme .orateur{
+	margin-top:.5em;
+}
+
+.programme-bloc-wrapper{
+	position:relative;
+}
+
+.bloc-programme .blue,
+.bloc-programme .red{
+	float:left;
+	width:50%;
+	display:flex;
+	flex-direction:column;
+}
+
+.bloc-programme .programme-blocs{
+	clear:left;
+	display:flex;
+}
+
+.bloc-programme .programme-blocs > :nth-child(2){
+	border-left:1px dashed #33334f;
+}
+
+.bloc-programme .blue .elem:nth-child(1) .heure{display:none;}
+
+.bloc-programme .deux .heure,
+.bloc-programme .red .heure,
+.bloc-programme .blue .elem + .elem .heure {
+	position:absolute;
+	right:100%;
+	top:-.65em;
+	margin-right:1em;
+}
+
+.bloc-programme .niveau{
+	position:absolute;
+	right:.5em;
+	bottom:.5em;
+	width:19px;
+	height:21px;
+	display:block;
+	overflow:hidden;
+	text-indent:25px;
+	background-image:url(../img/niveau-debutant.svg);
+	background-size:contain;
+	background-repeat:no-repeat;
+}
+
+.bloc-programme .niveau-initie {
+	background-image: url(../img/niveau-initie.svg);
+}
+.bloc-programme .niveau-avance {
+	background-image: url(../img/niveau-avance.svg);
+}
+
 @media (max-width:1440px) {
 	.titre-single{
 		width: 60%;
