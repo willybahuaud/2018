@@ -128,7 +128,7 @@ function build_programme( $i, $id ) {
 		</div>',array(
 			date_i18n( 'H:i', $time ),
 			$non_evenement ? '<div class="event-titre">' . wp_kses( $titre, array( 'del' => true, 'br' => true ) ) . '</div>' : '<a class="event-titre" href="' . get_permalink( $conference ) . '">' . wp_kses( get_the_title( $conference ), array( 'del' => true, 'br' => true ) ) . '</a>',
-			$orateur ? sprintf(
+			$orateur && ! $non_evenement ? sprintf(
 				'<div class="orateur">' . __( 'Par %1$s', 'dd8' ) . '
 				%2$s
 				</div>', esc_html( $orateur ), $twitter_orateur ? sprintf( '(<a href="https://twitter.com/%1$s">@%1$s</a>)', esc_html( $twitter_orateur ) ) : ''
