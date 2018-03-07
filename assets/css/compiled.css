@@ -1992,7 +1992,7 @@ body .tix-error {
 	font-size:1.25rem;
 	display:block;
 	line-height:1.4;
-	padding-right:1.5rem;
+	padding-right:3.5rem;
 }
 
 .bloc-programme .elem{
@@ -2075,24 +2075,26 @@ body .tix-error {
 
 .bloc-programme .niveau{
 	position:absolute;
-	right:.5em;
-	bottom:.5em;
-	width:26px;
-	height:26px;
-	display:block;
-	overflow:hidden;
-	text-indent:26px;
-	background-image:url(../img/easy-level.2.svg);
-	background-size:contain;
-	background-repeat:no-repeat;
+    left:0;
+    top:.75em;
+    height:36px;
+    display:block;
+    overflow:hidden;
+    text-indent:36px;
+    background-image:url(../img/easy-level.2.svg);
+    background-size:contain;
+    background-repeat:no-repeat;
+    width:36px;
+    margin-left:-3.35rem;
 }
 
 .bloc-programme .niveau-initie {
-	background-image: url(../img/average-level.2.svg);
+	background-image:url(../img/average-level.2.svg);
 }
 .bloc-programme .niveau-avance {
-	background-image: url(../img/hard-level.2.svg);
+	background-image:url(../img/hard-level.2.svg);
 }
+
 
 @media (max-width:1440px) {
 	.titre-single{
@@ -2258,6 +2260,11 @@ body .tix-error {
 
 	.bloc-programme .link-wrapper{
 		padding-left:5rem;
+	}
+
+	.bloc-programme .niveau{
+		left:auto;
+		right:0;
 	}
 
 	.comment{

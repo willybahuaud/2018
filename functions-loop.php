@@ -119,15 +119,14 @@ function build_programme( $i, $id ) {
 		<div class="heure">%1$s</div>
 		<div class="link-wrapper">%2$s
 		%3$s
-		%4$s</div>
+		</div>%4$s
 		</div>',array(
 			date_i18n( 'H:i', $time ),
 			$non_evenement ? '<div class="event-titre">' . wp_kses( $titre, array( 'del' => true, 'br' => true ) ) . '</div>' : '<a class="event-titre" href="' . get_permalink( $conference ) . '">' . wp_kses( get_the_title( $conference ), array( 'del' => true, 'br' => true ) ) . '</a>',
 			$orateur ? sprintf(
-				'<div class="orateur">%3$s%1$s
+				'<div class="orateur">' . __( 'Par %1$s', 'dd8' ) . '
 				%2$s
-				</div>', esc_html( $orateur ), $twitter_orateur ? sprintf( '(<a href="https://twitter.com/%1$s">@%1$s</a>)', esc_html( $twitter_orateur ) ) : '',
-				__( 'Animé par ', 'dd8' )
+				</div>', esc_html( $orateur ), $twitter_orateur ? sprintf( '(<a href="https://twitter.com/%1$s">@%1$s</a>)', esc_html( $twitter_orateur ) ) : ''
 			) : '',
 			$niveau && ! $non_evenement ? sprintf( '<span class="niveau niveau-%1$s" title="Niveau %1$s">%1$s</span>', esc_attr( $niveau ) ) : '',
 			$non_evenement ? 'off' : '',
