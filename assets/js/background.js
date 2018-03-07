@@ -141,7 +141,7 @@ function repeatOften() {
 }
 req = requestAnimationFrame(repeatOften);
 
-if ( document.getElementsByClassName( 'no-move' ) ) {
+if ( document.getElementsByClassName( 'no-move' ).length > 0 ) {
     cancelAnimationFrame(req);
 }
 
