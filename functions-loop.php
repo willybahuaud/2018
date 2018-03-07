@@ -98,7 +98,7 @@ function build_texte( $i, $id ) {
 
 function build_programme( $i, $id ) {
 	$tracks  = get_post_meta( $id, "blocs_{$i}_tracks", true );
-	$wrapper = '<div class="bloc-programme"><div class="salle-titres"><div class="salle-titre salle-1">%1$s</div><div class="salle-titre salle-2">%2$s</div></div>%3$s</div>';
+	$wrapper = '<div class="bloc-programme no-move"><div class="salle-titres"><div class="salle-titre salle-1">%1$s</div><div class="salle-titre salle-2">%2$s</div></div>%3$s</div>';
 	$chargement = array();
 	$content = array( 'red' => array(), 'blue' => array(), 'two' => array() );
 	for ( $j = 0; $j < $tracks; $j++ ) {

@@ -134,11 +134,16 @@ draw();
 
 document.body.appendChild(bg);
 
+var req;
 function repeatOften() {
     draw();
-    requestAnimationFrame(repeatOften);
+    req = requestAnimationFrame(repeatOften);
 }
-requestAnimationFrame(repeatOften);
+req = requestAnimationFrame(repeatOften);
+
+if ( document.getElementsByClassName( 'no-move' ) ) {
+    cancelAnimationFrame(req);
+}
 
 function resizeBackground() {
     if ( typeof bg != 'undefined' ) {
