@@ -111,6 +111,11 @@ function build_programme( $i, $id ) {
 		$orateur         = get_post_meta( $id, "blocs_{$i}_tracks_{$j}_orateur", true );
 		$twitter_orateur = get_post_meta( $id, "blocs_{$i}_tracks_{$j}_twitter_orateur", true );
 		$niveau          = get_post_meta( $id, "blocs_{$i}_tracks_{$j}_niveau", true );
+		switch ( $niveau ) {
+			case 'inite': $niveau    = __( 'initié', 'dd8' ); break;
+			case 'debutant': $niveau = __( 'débutant', 'dd8' ); break;
+			case 'avance': $niveau   = __( 'avancé', 'dd8' ); break;
+		}
 
 		$grid = $deux_salles ? 'two' : $salle;
 		$time = strtotime( '1/1/1970' . $heure );
@@ -128,7 +133,7 @@ function build_programme( $i, $id ) {
 				%2$s
 				</div>', esc_html( $orateur ), $twitter_orateur ? sprintf( '(<a href="https://twitter.com/%1$s">@%1$s</a>)', esc_html( $twitter_orateur ) ) : ''
 			) : '',
-			$niveau && ! $non_evenement ? sprintf( '<span class="niveau niveau-%1$s" title="Niveau %1$s">%1$s</span>', esc_attr( $niveau ) ) : '',
+			$niveau && ! $non_evenement ? sprintf( '<span class="niveau niveau-%1$s" title="Niveau %2$s"><span>%2$s</span></span>', remove_accents( $niveau ), esc_attr( $niveau ) ) : '',
 			$non_evenement ? 'off' : '',
 			esc_attr( $grid ),
 		) );
@@ -155,6 +160,16 @@ function build_programme( $i, $id ) {
 			$case = array( 'blue' => array(), 'red' => array() );
 		}
 	}
+
+	$levels = array();
+	foreach ( array( 
+		'debutant' => esc_attr__( 'Débutant', 'dd8' ), 
+		'initie'   => esc_attr__( 'Intermédiaire', 'dd8' ), 
+		'avance'   => esc_attr__( 'Confirmé', 'dd8' )
+		) as $l => $level ) {
+		$levels[] = sprintf( '<span class="niveau niveau-%1$s" title="Niveau %2$s">%2$s</span>', $l, $level );
+	}
+	$out .= '<div class="legend">' . implode( $levels ) . '</div>';
 
 	return vsprintf( $wrapper, array(
 		esc_html__( 'Salle Red', 'dd8' ),

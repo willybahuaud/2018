@@ -2078,8 +2078,8 @@ body .tix-error {
     left:0;
     top:.75em;
     height:36px;
-    display:block;
-    overflow:hidden;
+	display:block;
+	overflow:hidden;
     text-indent:36px;
     background-image:url(../img/easy-level.2.svg);
     background-size:contain;
@@ -2093,6 +2093,20 @@ body .tix-error {
 }
 .bloc-programme .niveau-avance {
 	background-image:url(../img/hard-level.2.svg);
+}
+
+.bloc-programme .legend .niveau{
+	position:relative;
+    overflow:visible;
+    left:auto;
+    top:auto;
+    display:inline-block;
+    width:auto;
+    margin-left:0;
+    line-height:2.5;
+    text-transform:uppercase;
+	margin-right:2rem;
+	text-indent:50px;
 }
 
 
