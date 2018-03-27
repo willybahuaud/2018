@@ -44,7 +44,7 @@ function content_filter( $content ) {
 
 add_action( 'loop_start', '\DD8\willy_loop_start' );
 function willy_loop_start() {
-	if ( is_page() && ! is_front_page() ) {
+	if ( is_page() && ! is_front_page() || is_singular( 'wet-offer' ) ) {
 		vprintf( '<section class="image-article-wrapper %3$s">
             <div class="titre-single"><h1>%1$s</h1></div>
             %2$s

@@ -592,6 +592,7 @@ form input[type="submit"]{
 }
 
 .frm_forms select,
+.wet-map-actions select,
 #tix form select{
 	width: 100%;
     height: 2.76rem;
@@ -626,7 +627,8 @@ select[name="tix_payment_method"]{
 	}
 }
 
-#tix form select{
+#tix form select,
+.wet-map-actions select{
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;

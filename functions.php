@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die();
 }
 
-define( 'DD8_VER', '2.0.14' );
+define( 'DD8_VER', '2.0.15' );
 
 get_template_part( 'functions', 'loop' );
 if ( is_admin() ) {
@@ -212,4 +212,13 @@ function camptix_register_order_title( $title ) {
 add_filter( 'camptix_register_registration_info_header', '\DD8\camptix_register_tickets_title' );
 function camptix_register_tickets_title( $title ) {
 	return __( 'Détails des participants', 'dd8' );
+}
+
+add_filter( 'the_content', '\DD8\remove_initial_wet_sc', -21 );
+function remove_initial_wet_sc( $content ) {
+	if ( is_main_query() && in_the_loop() ) {
+		$content = str_replace( '[wet-map/]', '', $content );
+		remove_filter( 'the_content', '\DD8\remove_initial_wet_sc', -21 );
+	}
+	return $content;
 }
